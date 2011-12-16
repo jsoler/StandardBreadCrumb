@@ -7,20 +7,19 @@
   <packaging>jar</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>breadcrumb</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/Emergya/StandardBreadCrumb</url>
 
   <properties>
 	 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	 <spring.version>3.0.5.RELEASE</spring.version>
   </properties>
 	
-  <dependencies>
-	    <dependency>
-	      <groupId>junit</groupId>
-	      <artifactId>junit</artifactId>
-	      <version>3.8.1</version>
-	      <scope>test</scope>
-	    </dependency>
+   <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 	  
   <build>
@@ -52,5 +51,67 @@
 			</snapshotRepository>
   </distributionManagement>
 
-
+  <developers>
+	<developer>
+			<id>eserrano</id>
+			<name>Eduardo Serrano</name>
+			<email>eserrano@emergya.com</email>
+			<organization>Emergya Consultoría</organization>
+			<organizationUrl>http://www.emergya.es</organizationUrl>
+			<roles>
+				<role>Analista funcional</role>
+			</roles>
+	</developer>
+	<developer>
+			<id>jariera</id>
+			<name>Jose Alfonso Riera</name>
+			<email>jariera@emergya.com</email>
+			<organization>Emergya Consultoría</organization>
+			<organizationUrl>http://www.emergya.es</organizationUrl>
+			<roles>
+				<role>Desarrollador</role>
+			</roles>
+	</developer>
+	<developer>
+			<id>jsoler</id>
+			<name>Jaime Soler</name>
+			<email>jsoler@emergya.com</email>
+			<organization>Emergya Consultoría</organization>
+			<organizationUrl>http://www.emergya.es</organizationUrl>
+			<roles>
+				<role>Analista Programador</role>
+			</roles>
+	</developer>
+	<developer>
+			<id>frodriguez</id>
+			<name>Francisco Rodriguez</name>
+			<email>frodriguez@emergya.com</email>
+			<organization>Emergya Consultoría</organization>
+			<organizationUrl>http://www.emergya.es</organizationUrl>
+			<roles>
+				<role>Desarrollador</role>
+			</roles>
+	</developer>
+  </developers>
+  <licenses>
+    <license>
+     <name>GPL</name>
+     <url>http://www.gnu.org/copyleft/gpl.html</url>
+    </license>
+  </licenses>
+  <organization>
+  	<name>Emergya Consultoría</name>
+  	<url>http://www.emergya.es</url>
+  </organization>
+  <scm>
+  	<url>git://github.com/Emergya/StandardBreadCrumb.git</url>
+  </scm>
+  <issueManagement>
+  	<system>github</system>
+  	<url>https://github.com/Emergya/StandardBreadCrumb/issues</url>
+  </issueManagement>
+  <ciManagement>
+  	<system>jenkins</system>
+  	<url>http://jenkins.emergya.es/jenkins/view/Venezuela/job/Componentes Utilidades Aplicaciones/</url>
+  </ciManagement>
 </project>
