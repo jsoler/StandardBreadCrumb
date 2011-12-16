@@ -12,7 +12,6 @@ import java.util.Map;
  * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
  * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
- * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
  * This file is Component BreadCrumb
  *
@@ -80,6 +79,15 @@ public interface IBreadCrumb {
 	 * @return the children
 	 */
 	public Collection<ITrace> getChildren();
+	
+	
+	/**
+	 * Gets the children by urlpattern.
+	 *
+	 * @return the children
+	 */
+	public ITrace getChildren(String urlpattern);
+	
 	
 	/**
 	 * Sets the children.

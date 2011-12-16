@@ -12,7 +12,6 @@ import java.util.Map;
  * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
  * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
- * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
  * This file is Component BreadCrumb
  *
@@ -79,8 +78,6 @@ public abstract class AbstractCrumb implements ICrumb{
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
-	
 	
 	
 	/**
@@ -154,27 +151,18 @@ public abstract class AbstractCrumb implements ICrumb{
 		this.globalParams = globalParams;
 	}
 	
-	
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getGETUrl() {
-		String url = this.getUrl();
+	public int compareTo(ICrumb crumb) {
+		int cmp = 0;
 		
-		Iterator<Map.Entry<String, String>> it_global = this.getGlobalParams();
-		while (it_global.hasNext()) {
-	        Map.Entry<String,String> pairs_glo = (Map.Entry<String,String>)it_global.next();
-	        url += "&" + pairs_glo.getKey() + "=" + pairs_glo.getValue();
-	    }
+		//FIXME: You may change the method
+		if(crumb != null){			
+				cmp = this.getText().compareToIgnoreCase(crumb.getText());
+		}
 		
-		Iterator<Map.Entry<String, String>> it_par = params.entrySet().iterator();
-		while (it_par.hasNext()) {
-	        Map.Entry<String, String> pairs_par = (Map.Entry<String, String>)it_par.next();
-	        url += "&" + pairs_par.getKey() + "=" + pairs_par.getValue();
-	    }
-		
-		return url;
+		return cmp;
 	}
-
 
 }

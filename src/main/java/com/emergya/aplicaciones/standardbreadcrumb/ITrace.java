@@ -13,7 +13,6 @@ import java.util.Map;
  * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
  * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
- * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
  * This file is Component BreadCrumb
  *
@@ -44,7 +43,7 @@ import java.util.Map;
 /**
  * The Interface ITrace.
  */
-public interface ITrace extends Comparable<ITrace>{
+public interface ITrace{
 	/**
 	 * Gets the text.
 	 *
@@ -78,18 +77,34 @@ public interface ITrace extends Comparable<ITrace>{
 
 	
 	/**
-	 * Gets the url.
+	 * Gets the urlpattern.
 	 *
-	 * @return the url
+	 * @return the urlpattern
 	 */
-	public String getUrl();
+	public String getUrlPattern();
 	
 	/**
-	 * Sets the url.
+	 * Sets the urlpattern.
 	 *
-	 * @param url the new url
+	 * @param url the new urlpattern
 	 */
-	public void setUrl(String url);
+	public void setUrlPattern(String urlPattern);
+	
+
+	/**
+	 * Gets the priority.
+	 *
+	 * @return the priority
+	 */
+	public Integer getPriority();
+	
+	/**
+	 * Sets the priority.
+	 *
+	 * @param url the new priority
+	 */
+	public void setPriority(Integer priority);
+
 	
 	
 	/**
@@ -121,50 +136,6 @@ public interface ITrace extends Comparable<ITrace>{
 	public void setParent(IBreadCrumb parent);
 	
 	/**
-	 * Gets the params.
-	 *
-	 * @return the params
-	 */
-	public Map<String, String> getParams();
-	
-	/**
-	 * Adds the param.
-	 *
-	 * @param key the key
-	 * @param value the value
-	 */
-	public void addParam(String key, String value);
-	
-	/**
-	 * Gets the param value.
-	 *
-	 * @param key the key
-	 * @return the param value
-	 */
-	public String getParamValue(String key);
-	
-	/**
-	 * Adds the global param.
-	 *
-	 * @param key the key
-	 */
-	public void addGlobalParam(String key, String value);
-	
-	/**
-	 * Removes the global param.
-	 *
-	 * @param key the key
-	 */
-	public void removeGlobalParam(String key);
-	
-	/**
-	 * Gets the global params.
-	 *
-	 * @return the global params
-	 */
-	public Iterator<Map.Entry<String, String>> getGlobalParams();
-	
-	/**
 	 * Gets the profiles.
 	 *
 	 * @return the profiles
@@ -192,11 +163,4 @@ public interface ITrace extends Comparable<ITrace>{
 	 */
 	public void setEnabled(boolean enabled);
 	
-	
-	/**
-	 * Compares two INodeMenu to determine the position
-	 * @param INodeMenu
-	 * @return int
-	 */
-	public int compareTo(ITrace trace);
 }

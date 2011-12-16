@@ -9,7 +9,6 @@ import java.util.Map;
  * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
  * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
- * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
  * This file is Component BreadCrumb
  *
@@ -40,7 +39,7 @@ import java.util.Map;
 /**
  * The Interface ICrumb.
  */
-public interface ICrumb {
+public interface ICrumb extends Comparable<ICrumb>{
 
 	/**
 	 * Gets the text.
@@ -130,5 +129,13 @@ public interface ICrumb {
 	 * @return the global params
 	 */
 	public Iterator<Map.Entry<String, String>> getGlobalParams();
+	
+	
+	/**
+	 * Compares two ICrumb to determine the position
+	 * @param ICrumb
+	 * @return int
+	 */
+	public int compareTo(ICrumb crumb);
 	
 }

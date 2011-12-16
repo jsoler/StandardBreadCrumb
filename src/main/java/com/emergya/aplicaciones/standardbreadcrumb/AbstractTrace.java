@@ -46,11 +46,10 @@ public abstract class AbstractTrace implements ITrace{
 
 	private String text;
 	private String description;
-	private String url;
+	private String urlpattern;
+	private Integer priority;
 	private Collection<ICrumb> children;
 	private IBreadCrumb parent;
-	private Map<String, String> params;
-	private Map<String, String> globalParams;
 	private Collection<String> profiles;
 	private boolean enabled;
 	
@@ -84,22 +83,35 @@ public abstract class AbstractTrace implements ITrace{
 		this.text = text;
 	}
 	
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
-	public String getUrl() {
-		return url;
+	public String getUrlPattern() {
+		return urlpattern;
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	public void setUrl(String url) {
-		this.url = url;
+	public void setUrlPattern(String urlpattern) {
+		this.urlpattern = urlpattern;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Integer getPriority() {
+		return this.priority;
 	}
 	
-	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void setPriority(Integer priority){
+		this.priority = priority;
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -123,63 +135,6 @@ public abstract class AbstractTrace implements ITrace{
 	 */
 	public void setParent(IBreadCrumb parent){
 		this.parent = parent;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public Map<String, String> getParams() {
-		return params;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void addParam(String key, String value) {
-		params.put(key, value);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getParamValue(String key) {
-		return params.get(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void addGlobalParam(String key, String value) {
-		globalParams.put(key, value);		
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void removeGlobalParam(String key) {
-		globalParams.remove(key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public Iterator<Map.Entry<String, String>> getGlobalParams() {
-		Iterator<Map.Entry<String, String>> it = globalParams.entrySet().iterator();
-		return it;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setParams(Map<String, String> params) {
-		this.params = params;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setGlobalParams(Map<String, String> globalParams) {
-		this.globalParams = globalParams;
 	}
 	
 	/**
@@ -209,43 +164,5 @@ public abstract class AbstractTrace implements ITrace{
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	
-	
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public String getGETUrl() {
-		String url = this.getUrl();
-		
-		Iterator<Map.Entry<String, String>> it_global = this.getGlobalParams();
-		while (it_global.hasNext()) {
-	        Map.Entry<String,String> pairs_glo = (Map.Entry<String,String>)it_global.next();
-	        url += "&" + pairs_glo.getKey() + "=" + pairs_glo.getValue();
-	    }
-		
-		Iterator<Map.Entry<String, String>> it_par = params.entrySet().iterator();
-		while (it_par.hasNext()) {
-	        Map.Entry<String, String> pairs_par = (Map.Entry<String, String>)it_par.next();
-	        url += "&" + pairs_par.getKey() + "=" + pairs_par.getValue();
-	    }
-		
-		return url;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public int compareTo(ITrace trace) {
-		int cmp = 0;
-		
-		//FIXME: You may change the method
-		if(trace != null){			
-				cmp = this.getText().compareToIgnoreCase(trace.getText());
-		}
-		
-		return cmp;
-	}
-	
 	
 }
