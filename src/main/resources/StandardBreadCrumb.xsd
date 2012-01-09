@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="breadcrumb">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="description"/>
+        <xs:element maxOccurs="unbounded" ref="trace"/>
+        <xs:element ref="profiles"/>
+        <xs:element ref="global-params"/>
+        <xs:element ref="base-url"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="trace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="url-pattern"/>
+        <xs:element ref="description"/>
+        <xs:element maxOccurs="unbounded" ref="crumb"/>
+        <xs:element ref="profiles"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="url-pattern" type="xs:string"/>
+  <xs:element name="crumb">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="text"/>
+        <xs:element ref="url"/>
+        <xs:sequence minOccurs="0">
+          <xs:element ref="params"/>
+          <xs:element ref="global-params"/>
+        </xs:sequence>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="text" type="xs:NCName"/>
+  <xs:element name="url" type="xs:string"/>
+  <xs:element name="params">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="param"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="base-url" type="xs:anyURI"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="param">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:NCName">
+          <xs:attribute name="key" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="global-params">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="key"/>
+        <xs:element maxOccurs="unbounded" ref="param"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="key" type="xs:NCName"/>
+  <xs:element name="profiles" type="xs:NCName"/>
+</xs:schema>

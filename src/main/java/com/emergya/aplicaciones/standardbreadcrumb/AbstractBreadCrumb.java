@@ -88,10 +88,7 @@ public abstract class AbstractBreadCrumb implements IBreadCrumb{
 	/**
 	 * {@inheritDoc}
 	 */
-	public ITrace getChildren(String urlpattern) {
-		//TODO: implemented 
-		return null;
-	}
+	public abstract ITrace getChildren(String urlpattern);
 
 	
 	/**

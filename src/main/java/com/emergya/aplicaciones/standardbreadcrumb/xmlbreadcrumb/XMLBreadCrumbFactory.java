@@ -1,6 +1,8 @@
-package com.emergya.aplicaciones.standardbreadcrumb;
+package com.emergya.aplicaciones.standardbreadcrumb.xmlbreadcrumb;
 
-
+import com.emergya.aplicaciones.standardbreadcrumb.BreadCrumbException;
+import com.emergya.aplicaciones.standardbreadcrumb.IBreadCrumb;
+import com.emergya.aplicaciones.standardbreadcrumb.IBreadCrumbFactory;
 
 /**
  * Copyright (C) 2011, Emergya (http://www.emergya.es)
@@ -8,8 +10,9 @@ package com.emergya.aplicaciones.standardbreadcrumb;
  * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
  * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
+ * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
- * This file is Component BreadCrumb
+ * This file is Component StandardMenu
  *
  * This software is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,17 +36,45 @@ package com.emergya.aplicaciones.standardbreadcrumb;
  * executable file might be covered by the GNU General Public License.
  */
 
-/**
- * A factory for creating IBreadCrumbFactory objects.
- */
-public interface IBreadCrumbFactory {
+public class XMLBreadCrumbFactory implements IBreadCrumbFactory {
+	
+	private static final String SEPARATOR = "/";
+	
 	
 	/**
-	 * 
-	 * @param nombre
-	 * @return
-	 * @throws BreadCrumbException
+	 * Gets Imenu from xml name
+	 * @param nombre, xml name
+	 * @return IMenu, generated menu
 	 */
-	public IBreadCrumb getBreadCrumb(String nombre) throws BreadCrumbException;
+	public IBreadCrumb getBreadCrumb(String nombre) throws BreadCrumbException {
+		// Xml path
+		String path = getPathByName(nombre);
+		
+		IBreadCrumb breadCrumb = null;
+		// Parser to read 
+		XmlParser parser = new XmlParser();
+		
+		breadCrumb = parser.createBreadCrumb(path);
+		
+		return breadCrumb;
+	}
+	
+	/**
+	 * Gets a path of xml from name of file
+	 *
+	 * @param description the new descripction
+	 */
+	private String getPathByName(String nombre){
+		
+		String path = null;
+		
+		String fileName = nombre + "_menu.xml";
+		String full_classPath = System.getProperty("java.class.path");
+		String[] separate_classPath = full_classPath.split(":");
+		String classPath = separate_classPath[0];
+		path = classPath + SEPARATOR + fileName;
+		
+		return path;
+	}
 
 }

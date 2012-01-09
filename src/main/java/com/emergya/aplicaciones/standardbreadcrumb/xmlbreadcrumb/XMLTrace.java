@@ -1,6 +1,12 @@
-package com.emergya.aplicaciones.standardbreadcrumb;
+package com.emergya.aplicaciones.standardbreadcrumb.xmlbreadcrumb;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
+import com.emergya.aplicaciones.standardbreadcrumb.AbstractTrace;
+import com.emergya.aplicaciones.standardbreadcrumb.ICrumb;
 
 /**
  * Copyright (C) 2011, Emergya (http://www.emergya.es)
@@ -8,8 +14,9 @@ package com.emergya.aplicaciones.standardbreadcrumb;
  * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
  * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
+ * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
- * This file is Component BreadCrumb
+ * This file is Component StandardBreadCrumb
  *
  * This software is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,17 +40,16 @@ package com.emergya.aplicaciones.standardbreadcrumb;
  * executable file might be covered by the GNU General Public License.
  */
 
-/**
- * A factory for creating IBreadCrumbFactory objects.
- */
-public interface IBreadCrumbFactory {
+public class XMLTrace extends AbstractTrace {
 	
-	/**
-	 * 
-	 * @param nombre
-	 * @return
-	 * @throws BreadCrumbException
-	 */
-	public IBreadCrumb getBreadCrumb(String nombre) throws BreadCrumbException;
-
+	public XMLTrace(){
+		super();
+		
+		SortedSet<ICrumb> children = new TreeSet<ICrumb>();
+		List<String> profiles = new  LinkedList<String>();
+		
+		
+		super.setChildren(children);
+		super.setProfiles(profiles);
+	}
 }
