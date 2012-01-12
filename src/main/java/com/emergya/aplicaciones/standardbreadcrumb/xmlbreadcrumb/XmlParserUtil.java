@@ -8,7 +8,7 @@ package com.emergya.aplicaciones.standardbreadcrumb.xmlbreadcrumb;
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
  * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
- * This file is Component StandardMenu
+ * This file is Component StandardBreadCrumb
  *
  * This software is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -50,9 +50,8 @@ public class XmlParserUtil {
 	private static final String KEY = "key";
 	private static final String PROFILES = "profiles";
 	private static final String PROFILE = "profile";
-	private static final String NODES = "nodes";
-	private static final String NODE = "node";
-	private static final String CHILDREN = "children";	
+	private static final String TRACE = "trace";
+
 	
 	/**
 	 * Gets info leaf node
@@ -207,7 +206,7 @@ public class XmlParserUtil {
 		
 		boolean hasNodes = false;
 		Node root = doc.getDocumentElement();
-		Node nodes = getChildNode(doc, root, NODES);
+		Node nodes = getChildNode(doc, root, TRACE);
 		if(nodes != null){
 			hasNodes = true;
 		}
@@ -224,10 +223,10 @@ public class XmlParserUtil {
 		NodeList nodeList = null;
 		Node root = doc.getDocumentElement();
 		// Nodo <nodes>
-		Node nodes = getChildNode(doc, root, NODES);
+		Node nodes = getChildNode(doc, root, TRACE);
 		Element element = (Element)nodes;
 		// Lista de <node> de <nodes>
-		nodeList = element.getElementsByTagName(NODE);
+		nodeList = element.getElementsByTagName(TRACE);
 		List<Node> list = new LinkedList<Node>();
 		for(int i=0;i<nodeList.getLength();i++){
 			Node n = nodeList.item(i);

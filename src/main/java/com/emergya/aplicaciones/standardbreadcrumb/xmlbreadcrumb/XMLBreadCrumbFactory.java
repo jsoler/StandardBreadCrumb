@@ -12,7 +12,7 @@ import com.emergya.aplicaciones.standardbreadcrumb.IBreadCrumbFactory;
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
  * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
- * This file is Component StandardMenu
+ * This file is Component StandardBreadCrumb
  *
  * This software is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,9 +42,9 @@ public class XMLBreadCrumbFactory implements IBreadCrumbFactory {
 	
 	
 	/**
-	 * Gets Imenu from xml name
+	 * Gets IBreadCrumb from xml name
 	 * @param nombre, xml name
-	 * @return IMenu, generated menu
+	 * @return IBreadCrumb, generated menu
 	 */
 	public IBreadCrumb getBreadCrumb(String nombre) throws BreadCrumbException {
 		// Xml path

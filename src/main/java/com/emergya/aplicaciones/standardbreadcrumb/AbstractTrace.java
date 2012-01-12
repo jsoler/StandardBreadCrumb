@@ -13,7 +13,7 @@ import java.util.Map;
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
  * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
- * This file is Component BreadCrumb
+ * This file is Component StandardBreadCrumb
  *
  * This software is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

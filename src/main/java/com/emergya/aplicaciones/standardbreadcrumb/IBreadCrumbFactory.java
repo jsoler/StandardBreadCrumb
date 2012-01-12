@@ -9,7 +9,7 @@ package com.emergya.aplicaciones.standardbreadcrumb;
  * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
  * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
  *
- * This file is Component BreadCrumb
+ * This file is Component StandardBreadCrumb
  *
  * This software is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
