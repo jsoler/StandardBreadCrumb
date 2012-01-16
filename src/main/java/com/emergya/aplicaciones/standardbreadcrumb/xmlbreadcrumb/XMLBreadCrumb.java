@@ -13,7 +13,9 @@ import com.emergya.aplicaciones.standardbreadcrumb.ITrace;
 /**
  * Copyright (C) 2011, Emergya (http://www.emergya.es)
  *
+ * @author <a href="mailto:eserrano@emergya.com">Eduardo Serrano Luque</a>
  * @author <a href="mailto:jsoler@emergya.com">Jaime Soler</a>
+ * @author <a href="mailto:jariera@emergya.com">José Alfonso Riera</a>
  * @author <a href="mailto:frodriguez@emergya.com">Francisco Rodríguez Mudarra</a>
  *
  * This file is Component StandardBreadCrumb
