@@ -51,6 +51,7 @@ public class XmlParserUtil {
 	private static final String PROFILES = "profiles";
 	private static final String PROFILE = "profile";
 	private static final String TRACE = "trace";
+	private static final String CRUMB = "crumb";
 
 	
 	/**
@@ -247,9 +248,9 @@ public class XmlParserUtil {
 	public List<Node> getListNodes(Document doc, Node father){
 		
 		NodeList nodeList = null;
-		Node nodes = getChildNode(doc, father, CHILDREN);
+		Node nodes = getChildNode(doc, father, TRACE);
 		Element element = (Element)nodes;
-		nodeList = element.getElementsByTagName(NODE);
+		nodeList = element.getElementsByTagName(CRUMB);
 		
 		List<Node> list = new LinkedList<Node>();
 		for(int i=0;i<nodeList.getLength();i++){
@@ -272,7 +273,7 @@ public class XmlParserUtil {
 	public boolean nodeHasChildren(Document doc, Node node){
 		
 		boolean hasNodes = false;
-		Node nodes = getChildNode(doc, node, CHILDREN);
+		Node nodes = getChildNode(doc, node, TRACE);
 		if(nodes != null){
 			hasNodes = true;
 		}
