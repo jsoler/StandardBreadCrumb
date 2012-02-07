@@ -37,18 +37,13 @@ import com.emergya.aplicaciones.standardbreadcrumb.IBreadCrumbFactory;
  */
 
 public class XMLBreadCrumbFactory implements IBreadCrumbFactory {
-	
-	private static final String SEPARATOR = "/";
-	
-	
+		
 	/**
 	 * Gets IBreadCrumb from xml name
 	 * @param nombre, xml name
 	 * @return IBreadCrumb, generated menu
 	 */
-	public IBreadCrumb getBreadCrumb(String nombre) throws BreadCrumbException {
-		// Xml path
-		String path = getPathByName(nombre);
+	public IBreadCrumb getBreadCrumb(String path) throws BreadCrumbException {
 		
 		IBreadCrumb breadCrumb = null;
 		// Parser to read 
@@ -57,24 +52,7 @@ public class XMLBreadCrumbFactory implements IBreadCrumbFactory {
 		breadCrumb = parser.createBreadCrumb(path);
 		
 		return breadCrumb;
-	}
-	
-	/**
-	 * Gets a path of xml from name of file
-	 *
-	 * @param description the new descripction
-	 */
-	private String getPathByName(String nombre){
 		
-		String path = null;
-		
-		String fileName = nombre + "_menu.xml";
-		String full_classPath = System.getProperty("java.class.path");
-		String[] separate_classPath = full_classPath.split(":");
-		String classPath = separate_classPath[0];
-		path = classPath + SEPARATOR + fileName;
-		
-		return path;
 	}
 
 }
