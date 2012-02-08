@@ -224,14 +224,16 @@ public class XmlParserUtil {
 		NodeList nodeList = null;
 		Node root = doc.getDocumentElement();
 		// Nodo <nodes>
-		Node nodes = getChildNode(doc, root, TRACE);
-		Element element = (Element)nodes;
+		//Node nodes = getChildNode(doc, root, TRACE);
+		//Element element = (Element)nodes;
 		// Lista de <node> de <nodes>
+		//nodeList = element.getElementsByTagName(TRACE);
+		Element element = (Element)root;
 		nodeList = element.getElementsByTagName(TRACE);
 		List<Node> list = new LinkedList<Node>();
 		for(int i=0;i<nodeList.getLength();i++){
 			Node n = nodeList.item(i);
-			if(n.getParentNode().equals(nodes)){
+			if(n.getParentNode().equals(root)){
 				list.add(n);
 			}
 		}

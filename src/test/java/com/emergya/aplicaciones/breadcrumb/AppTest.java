@@ -1,8 +1,16 @@
 package com.emergya.aplicaciones.breadcrumb;
 
+import java.io.File;
+
+import junit.framework.AssertionFailedError;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import com.emergya.aplicaciones.standardbreadcrumb.BreadCrumbException;
+import com.emergya.aplicaciones.standardbreadcrumb.IBreadCrumb;
+import com.emergya.aplicaciones.standardbreadcrumb.IBreadCrumbFactory;
+import com.emergya.aplicaciones.standardbreadcrumb.xmlbreadcrumb.XMLBreadCrumbFactory;
 
 
 
@@ -33,11 +41,34 @@ public class AppTest extends TestCase {
      * Rigourous Test :-)
      */
     public void testApp(){
-        assertTrue( true );
-    }
-    
-    
-    
+    	System.out.println("Starting BreadCrumbXML test\n");
+    	
+    	IBreadCrumbFactory factoria = new XMLBreadCrumbFactory();
+    	try {
+    		
+    		String path = null;
+			String fileName = "breadcrumb.xml";
+			String full_classPath = System.getProperty("java.class.path");
+			String[] separate_classPath = full_classPath.split(":");
+			String classPath = separate_classPath[0];
+			path = classPath + File.separatorChar+ fileName;
+    		
+			IBreadCrumb breadCrumb = factoria.getBreadCrumb(path);
+			try {
+				assertTrue(true);
+			} catch (AssertionFailedError f) {
+				System.out.println("An error occurred during test breadCrumbXML");
+				fail();
+			}
+			/*if(checkMenuFuncionality(menu1)){				
+				printMenu(menu1);
+			}*/
+		} catch (BreadCrumbException e) {
+			e.printStackTrace();
+		}
+    	
+    	System.out.println("Test BreadCrumbXML finished");
+    }   
     
 }
 
