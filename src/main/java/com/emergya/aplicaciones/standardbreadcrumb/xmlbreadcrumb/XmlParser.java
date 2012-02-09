@@ -61,9 +61,8 @@ public class XmlParser {
 	private static final String TEXT = "text";
 	private static final String PRIORITY = "priority";
 	private static final String URL = "url";
-	private static final String ICONURL = "iconUrl";
-	private static final String ENABLED = "enabled";
-	private static final String ACTIVE = "active";
+	private static final String URLPATTERN = "url-pattern";
+	private static final String ENABLE = "enabled";
 	private static final String MSG = "There was an error in createbreadCrumb";
 	
 	/**
@@ -133,12 +132,8 @@ public class XmlParser {
 				//Construimos la información del nodo y la pasamos al objeto leyendo del xml
 				ITrace nm = parseNode(doc, n, null);
 				
-				//Tomamos los hijos de forma recursiva
-				//SortedSet<INodebreadCrumb> children = getChildren(doc,n,nm);
-				//nm.setChildren(children);
-				
 				//añadimos el nodo de nivel 0 al breadcrumb
-				//childrenList.add(nm);
+				childrenList.add(nm);
 			}
 			breadCrumb.setChildren(childrenList);
 		}
@@ -146,41 +141,6 @@ public class XmlParser {
 		return breadCrumb;
 	}
 	
-	/**
-	 * Recursive method that will cover every node in the breadCrumb
-	 * @param n, actual node
-	 * @param doc, Document generated from breadCrumb xml
-	 * @return INodebreadCrumb list
-	 */	
-	public SortedSet<ITrace> getChildren(Document doc, Node node, ITrace parent){
-		
-		//Lista de Hijos a devolver
-		SortedSet<ITrace> children = new TreeSet<ITrace>();
-		
-		XmlParserUtil xpu = new XmlParserUtil();
-
-		if(xpu.nodeHasChildren(doc, node)){
-			
-			//Lista de nodos del nivel inferior al padre -> variable parent
-			List<Node> list = xpu.getListNodes(doc,node);
-			
-			ITrace child = null;
-			
-			for(int i=0; i<list.size();i++){
-				//Parsear el hijo y convertirlo a nodo
-				Node childNode = list.get(i);
-				//child = parseNode(doc,childNode,parent);
-				children.add(child);
-				
-				SortedSet<ITrace> hijos = getChildren(doc, childNode, child);
-				
-				//child.setChildren(hijos);
-			}
-
-		}
-		
-		return children;
-	}
 	/**
 	 * Sets node properties
 	 * @param doc, Document generated from breadCrumb xml
@@ -195,24 +155,91 @@ public class XmlParser {
 		XmlParserUtil parser = new XmlParserUtil();
 		
 		String text = parser.getValueLeafNode(doc, TEXT, n);
-		String url = parser.getValueLeafNode(doc, URL, n);
-		String iconUrl = parser.getValueLeafNode(doc, ICONURL, n);
-		SortedSet<ICrumb> children = null;
+		String urlPattern = parser.getValueLeafNode(doc, URLPATTERN, n);
+		String description = parser.getValueLeafNode(doc, DESCRIPTION, n);
+		Boolean enabled = parser.getBoolean(doc,ENABLE, n);
+		String priority  = parser.getValueLeafNode(doc, PRIORITY, n);
+		
+		//Lista de Hijos a devolver
+		SortedSet<ICrumb> children = new TreeSet<ICrumb>();
+		if(parser.nodeHasChildren(doc, n)){
+
+			//Lista de nodos del nivel inferior al padre -> variable parent
+			List<Node> list = parser.getListNodes(doc,n);
+		
+			ICrumb child = null;
+			for(int i=0; i<list.size();i++){
+				//Parsear el hijo y convertirlo a nodo
+				Node childNode = list.get(i);
+				child = parseCrumbNode(doc,childNode,nodeTrace);
+				children.add(child);
+				
+			}
+		}	
 		List<String> profiles = parser.getProfiles(doc, n);
-		boolean enabled = parser.getBoolean(doc, ENABLED, n); 		
-		boolean active = parser.getBoolean(doc, ACTIVE, n);
 		
 		// Insercion valores en el nodo
 		nodeTrace.setText(text);
+		nodeTrace.setDescription(description);
+		nodeTrace.setUrlPattern(urlPattern);
+		nodeTrace.setEnabled(enabled);
+		nodeTrace.setPriority(Integer.decode(priority));
 		
 		nodeTrace.setChildren(children);
 		nodeTrace.setParent(father);
 		
 		
 		nodeTrace.setProfiles(profiles);
-		nodeTrace.setEnabled(enabled);
 		
 		return nodeTrace;
 	}
+	
+	
+	
+	/**
+	 * Sets node properties
+	 * @param doc, Document generated from breadCrumb xml
+	 * @param n, Node that contais info node
+	 * @param father, INodebreadCrumb father
+	 * @return INodebreadCrumb
+	 */
+	public ICrumb parseCrumbNode(Document doc, Node n, ITrace father){
+		
+		ICrumb nodeCrumb = new XMLCrumb();
+		// Parseo directo desde el xml
+		XmlParserUtil parser = new XmlParserUtil();
+		
+		String text = parser.getValueLeafNode(doc, TEXT, n);
+		String url = parser.getValueLeafNode(doc, URL, n);
+		
+		// Insercion valores en el nodo
+		nodeCrumb.setText(text);
+		nodeCrumb.setUrl(url);
+		
+		Map<String, String> globalParams = parser.getGloblalParameters(doc,n);
+		Iterator<Map.Entry<String, String>> it = globalParams.entrySet().iterator();
+		
+		while(it.hasNext()){
+			Map.Entry<String, String> mapEntry = (Map.Entry<String, String>)it.next();
+			nodeCrumb.addGlobalParam(mapEntry.getKey(), mapEntry.getValue());
+		}
+		
+		Map<String, String> params = parser.getParameters(doc, n);
+		Iterator<Map.Entry<String, String>> it2 = params.entrySet().iterator();
+		while(it2.hasNext()){
+			Map.Entry<String, String> mapEntry2 = (Map.Entry<String, String>)it2.next();
+			nodeCrumb.addParam(mapEntry2.getKey(), mapEntry2.getValue());
+		}
+		
+		
+		
+				
+		nodeCrumb.setParent(father);
+		
+		
+		
+		return nodeCrumb;
+	}
+
 	
 }

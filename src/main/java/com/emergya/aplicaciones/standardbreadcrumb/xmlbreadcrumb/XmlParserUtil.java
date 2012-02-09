@@ -160,7 +160,7 @@ public class XmlParserUtil {
 	
 	/**
 	 * Gets profile list of a node
-	 * @param doc, Document generated from menu xml
+	 * @param doc, Document generated from breadcrumb xml
 	 * @param father, parent node
 	 * @return profile list
 	 */
@@ -216,7 +216,7 @@ public class XmlParserUtil {
 	}
 	/**
 	 * Return root children
-	 * @param doc, Document generated from menu xml
+	 * @param doc, Document generated from breadcrumb xml
 	 * @return node list
 	 */
 	public List<Node> getListRootNodes(Document doc){
@@ -250,16 +250,16 @@ public class XmlParserUtil {
 	public List<Node> getListNodes(Document doc, Node father){
 		
 		NodeList nodeList = null;
-		Node nodes = getChildNode(doc, father, TRACE);
-		Element element = (Element)nodes;
-		nodeList = element.getElementsByTagName(CRUMB);
+		//Node nodes = getChildNode(doc, father, TRACE);
+		//Element element = (Element)nodes;
+		nodeList = ((Element) father).getElementsByTagName(CRUMB);
 		
 		List<Node> list = new LinkedList<Node>();
 		for(int i=0;i<nodeList.getLength();i++){
 			Node n = nodeList.item(i);
-			if(n.getParentNode().equals(nodes)){
+			//if(n.getParentNode().equals(nodes)){
 				list.add(n);
-			}
+			//}
 		}
 		
 		return list;
@@ -275,7 +275,7 @@ public class XmlParserUtil {
 	public boolean nodeHasChildren(Document doc, Node node){
 		
 		boolean hasNodes = false;
-		Node nodes = getChildNode(doc, node, TRACE);
+		Node nodes = getChildNode(doc, node, CRUMB);
 		if(nodes != null){
 			hasNodes = true;
 		}

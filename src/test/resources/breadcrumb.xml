@@ -20,16 +20,18 @@
         </crumb>
         <crumb>
             <text>Administracion</text>
-            <url></url>
+            <url>xxx</url>
             <!-- Este es el elemento final que aparece en color distinto y no redirige a ningún sitio -->
         </crumb>
-
-        <profiles>
+		<profiles>
         	<profile>All</profile>
         </profiles>
+        <enabled>true</enabled>
+        <priority>1</priority>
     </trace>
     <profiles>
     	<profile>All</profile>
+    	<profile>Owner</profile>
     </profiles>
     <global-params>
         <param key="clave">valor</param>

@@ -20,9 +20,13 @@
         <xs:element ref="description"/>
         <xs:element maxOccurs="unbounded" ref="crumb"/>
         <xs:element ref="profiles"/>
+        <xs:element ref="enabled"/>
+        <xs:element ref="priority"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="enabled" type="xs:boolean"/>
+  <xs:element name="priority" type="xs:integer"/>
   <xs:element name="url-pattern" type="xs:string"/>
   <xs:element name="crumb">
     <xs:complexType>
