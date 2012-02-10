@@ -44,7 +44,7 @@ import java.util.Map;
 /**
  * The Interface ITrace.
  */
-public interface ITrace{
+public interface ITrace  extends Comparable<ITrace>{
 	/**
 	 * Gets the text.
 	 *

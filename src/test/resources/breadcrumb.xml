@@ -29,6 +29,20 @@
         <enabled>true</enabled>
         <priority>1</priority>
     </trace>
+    <trace>
+   		<name>Rastro de inicio</name>
+	    <url-pattern>/index.xhtml</url-pattern>
+	    <description>Rastro de migas de pan de inicio</description>
+        <crumb>
+            <text>Home</text>
+            <url>index.xhtml</url>
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>2</priority>
+    </trace>
     <profiles>
     	<profile>All</profile>
     	<profile>Owner</profile>

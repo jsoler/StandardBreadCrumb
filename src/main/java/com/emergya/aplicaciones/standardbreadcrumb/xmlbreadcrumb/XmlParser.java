@@ -154,7 +154,7 @@ public class XmlParser {
 		// Parseo directo desde el xml
 		XmlParserUtil parser = new XmlParserUtil();
 		
-		String text = parser.getValueLeafNode(doc, TEXT, n);
+		String text = parser.getValueLeafNode(doc, NAME, n);
 		String urlPattern = parser.getValueLeafNode(doc, URLPATTERN, n);
 		String description = parser.getValueLeafNode(doc, DESCRIPTION, n);
 		Boolean enabled = parser.getBoolean(doc,ENABLE, n);
