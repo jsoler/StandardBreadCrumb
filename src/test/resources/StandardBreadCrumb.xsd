@@ -70,5 +70,12 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="key" type="xs:NCName"/>
-  <xs:element name="profiles" type="xs:NCName"/>
+  <xs:element name="profiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="profile"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="profile" type="xs:NCName"/>
 </xs:schema>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<breadcrumb xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="StandardBreadCrumb.xsd">
+    <name>BreadCrumb</name>
+    <description>BreadCrumb del portal web</description>
+
+    <trace>
+   		<name>Rastro de administracion</name>
+	    <url-pattern>/administration/*</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de administración</description>
+        <crumb>
+            <text>Home</text>
+            <url>index.xhtml</url>
+            <params>            
+                <param key="clave">valor</param>
+                <param key="clave1">valor1</param>    
+            </params>    
+            <global-params>    
+                <key>clave1</key>
+            </global-params>
+        </crumb>
+        <crumb>
+            <text>Administracion</text>
+            <url>xxx</url>
+            <!-- Este es el elemento final que aparece en color distinto y no redirige a ningún sitio -->
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>1</priority>
+    </trace>
+    <profiles>
+    	<profile>All</profile>
+    	<profile>Owner</profile>
+    </profiles>
+    <global-params>
+        <param key="clave">valor</param>
+        <param key="clave1">valor1</param>
+    </global-params>
+    <base-url>localhost:8080/miapp</base-url>
+</breadcrumb>
