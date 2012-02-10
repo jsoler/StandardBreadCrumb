@@ -40,7 +40,7 @@ import java.util.Map;
 /**
  * The Interface ICrumb.
  */
-public interface ICrumb extends Comparable<ICrumb>{
+public interface ICrumb {
 
 	/**
 	 * Gets the text.
@@ -131,12 +131,5 @@ public interface ICrumb extends Comparable<ICrumb>{
 	 */
 	public Iterator<Map.Entry<String, String>> getGlobalParams();
 	
-	
-	/**
-	 * Compares two ICrumb to determine the position
-	 * @param ICrumb
-	 * @return int
-	 */
-	public int compareTo(ICrumb crumb);
 	
 }
