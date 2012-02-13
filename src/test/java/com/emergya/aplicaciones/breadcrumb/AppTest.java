@@ -124,7 +124,7 @@ public class AppTest extends TestCase {
 		// Check children
 		Collection<ITrace> children = bread.getChildren();
 		// Check num children
-		if(children.size() != 2){
+		if(children.size() != 5){
 			return false;
 		}
 		/* Check a child
