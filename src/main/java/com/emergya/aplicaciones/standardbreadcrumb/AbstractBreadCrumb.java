@@ -89,13 +89,15 @@ public abstract class AbstractBreadCrumb implements IBreadCrumb{
 	/**
 	 * {@inheritDoc}
 	 */
-	public ITrace getChildren(String urlpattern){
+	public ITrace getChildren(String url){
 		
 		ITrace child = null;
-		for (Iterator iterator = this.children.iterator(); iterator.hasNext();) {
-			child = (ITrace) iterator.next();
-			if(child.getUrlPattern().equals(urlpattern))
-				return child;
+
+		
+		for (Iterator<ITrace> iterator = this.children.iterator(); iterator.hasNext();) {
+			ITrace child2 = (ITrace) iterator.next();
+			if(url.matches(child2.getUrlPattern()))
+				child = child2;
 			
 		}
 		return child;
