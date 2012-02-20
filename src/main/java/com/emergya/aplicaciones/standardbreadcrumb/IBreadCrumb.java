@@ -83,11 +83,11 @@ public interface IBreadCrumb {
 	
 	
 	/**
-	 * Gets the children by urlpattern.
+	 * Gets the children by url.
 	 *
 	 * @return the children
 	 */
-	public ITrace getChildren(String urlpattern);
+	public ITrace getChildren(String url);
 	
 	
 	/**

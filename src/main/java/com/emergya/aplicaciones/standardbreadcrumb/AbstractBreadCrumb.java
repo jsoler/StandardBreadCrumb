@@ -3,6 +3,7 @@ package com.emergya.aplicaciones.standardbreadcrumb;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Copyright (C) 2011, Emergya (http://www.emergya.es)
@@ -89,7 +90,20 @@ public abstract class AbstractBreadCrumb implements IBreadCrumb{
 	/**
 	 * {@inheritDoc}
 	 */
-	public abstract ITrace getChildren(String urlpattern);
+	public ITrace getChildren(String url){
+		
+		ITrace child = null;
+
+		
+		for (Iterator<ITrace> iterator = this.children.iterator(); iterator.hasNext();) {
+			ITrace child2 = (ITrace) iterator.next();
+			if(Pattern.matches(child2.getUrlPattern(), url))
+				child = child2;
+			
+		}
+		return child;
+		
+	}
 
 	
 	/**

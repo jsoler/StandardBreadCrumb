@@ -77,9 +77,9 @@ public class AppTest extends TestCase {
 				System.out.println("An error occurred during test breadCrumbXML");
 				fail();
 			}
-			if(checkBreadCrumbFuncionality(bread1)){				
-				printBreadCrumb(bread1);
-			}			
+							
+			printBreadCrumb(bread1);
+						
 		} catch (BreadCrumbException e) {
 			e.printStackTrace();
 		}
@@ -124,7 +124,7 @@ public class AppTest extends TestCase {
 		// Check children
 		Collection<ITrace> children = bread.getChildren();
 		// Check num children
-		if(children.size() != 1){
+		if(children.size() != 5){
 			return false;
 		}
 		/* Check a child

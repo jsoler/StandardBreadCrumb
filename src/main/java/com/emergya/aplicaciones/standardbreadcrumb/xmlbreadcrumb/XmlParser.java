@@ -35,6 +35,7 @@ package com.emergya.aplicaciones.standardbreadcrumb.xmlbreadcrumb;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
@@ -154,14 +155,14 @@ public class XmlParser {
 		// Parseo directo desde el xml
 		XmlParserUtil parser = new XmlParserUtil();
 		
-		String text = parser.getValueLeafNode(doc, TEXT, n);
+		String text = parser.getValueLeafNode(doc, NAME, n);
 		String urlPattern = parser.getValueLeafNode(doc, URLPATTERN, n);
 		String description = parser.getValueLeafNode(doc, DESCRIPTION, n);
 		Boolean enabled = parser.getBoolean(doc,ENABLE, n);
 		String priority  = parser.getValueLeafNode(doc, PRIORITY, n);
 		
 		//Lista de Hijos a devolver
-		SortedSet<ICrumb> children = new TreeSet<ICrumb>();
+		List<ICrumb> children = new LinkedList<ICrumb>();
 		if(parser.nodeHasChildren(doc, n)){
 
 			//Lista de nodos del nivel inferior al padre -> variable parent

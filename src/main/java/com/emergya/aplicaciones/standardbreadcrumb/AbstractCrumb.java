@@ -152,18 +152,5 @@ public abstract class AbstractCrumb implements ICrumb{
 		this.globalParams = globalParams;
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
-	public int compareTo(ICrumb crumb) {
-		int cmp = 0;
-		
-		//FIXME: You may change the method
-		if(crumb != null){			
-				cmp = this.getText().compareToIgnoreCase(crumb.getText());
-		}
-		
-		return cmp;
-	}
-
+	
 }

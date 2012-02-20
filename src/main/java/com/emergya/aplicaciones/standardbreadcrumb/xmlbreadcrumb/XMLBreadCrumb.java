@@ -56,11 +56,7 @@ public class XMLBreadCrumb extends AbstractBreadCrumb{
 		super.setProfiles(profiles);
 	}
 
-	@Override
-	public ITrace getChildren(String urlpattern) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 }

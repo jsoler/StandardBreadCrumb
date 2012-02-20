@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 
+
+
 /**
  * Copyright (C) 2011, Emergya (http://www.emergya.es)
  *
@@ -163,6 +165,24 @@ public abstract class AbstractTrace implements ITrace{
 	 */
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public int compareTo(ITrace trace) {
+		int cmp = 0;
+		
+		if(trace != null){			
+			if(this.priority != trace.getPriority()){
+				cmp = new Integer(this.priority).compareTo(new Integer(trace.getPriority()));
+			}else{
+				cmp = this.getText().compareToIgnoreCase(trace.getText());
+			}
+		}
+		
+		return cmp;
 	}
 	
 }

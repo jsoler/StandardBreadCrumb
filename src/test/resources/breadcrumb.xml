@@ -3,25 +3,13 @@
     <name>BreadCrumb</name>
     <description>BreadCrumb del portal web</description>
 
-    <trace>
-   		<name>Rastro de administracion</name>
-	    <url-pattern>/administration/*</url-pattern>
-	    <description>Rastro de migas de pan para el módulo de administración</description>
+	<trace>
+   		<name>Rastro de inicio</name>
+	    <url-pattern>/index.xhtml</url-pattern>
+	    <description>Rastro de migas de pan de inicio</description>
         <crumb>
             <text>Home</text>
-            <url>index.xhtml</url>
-            <params>            
-                <param key="clave">valor</param>
-                <param key="clave1">valor1</param>    
-            </params>    
-            <global-params>    
-                <key>clave1</key>
-            </global-params>
-        </crumb>
-        <crumb>
-            <text>Administracion</text>
-            <url>xxx</url>
-            <!-- Este es el elemento final que aparece en color distinto y no redirige a ningún sitio -->
+            <url>/index.xhtml</url>
         </crumb>
 		<profiles>
         	<profile>All</profile>
@@ -29,6 +17,83 @@
         <enabled>true</enabled>
         <priority>1</priority>
     </trace>
+
+    <trace>
+   		<name>Rastro de administracion usuarios</name>
+	    <url-pattern>/pages/user/manageUser/userList.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de usuario</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Usuarios</text>
+            <url>/pages/user/manageUser/userList.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>2</priority>
+    </trace>
+    
+    <trace>
+   		<name>Rastro de administracion de solicitudes de registro</name>
+	    <url-pattern>/pages/user/manageSignup/signupList.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de solicitudes de registro</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Solicitudes</text>
+            <url>/pages/user/manageSignup/signupList.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>3</priority>
+    </trace>
+    
+   	<trace>
+   		<name>Rastro de administracion de base de conocimiento</name>
+	    <url-pattern>/pages/Knowledge/kbList.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de base de conocimiento</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Conocimiento</text>
+            <url>/pages/Knowledge/kbList.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>4</priority>
+    </trace>
+    
+       	<trace>
+   		<name>Rastro de administracion de instituciones</name>
+	    <url-pattern>/pages/institucion/institucionList.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de instituciones</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Instituciones</text>
+            <url>/pages/institucion/institucionList.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>5</priority>
+    </trace>
+    
     <profiles>
     	<profile>All</profile>
     	<profile>Owner</profile>
