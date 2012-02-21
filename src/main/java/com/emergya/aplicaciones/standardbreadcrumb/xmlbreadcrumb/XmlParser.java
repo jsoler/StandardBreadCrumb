@@ -34,6 +34,7 @@ package com.emergya.aplicaciones.standardbreadcrumb.xmlbreadcrumb;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -68,27 +69,37 @@ public class XmlParser {
 	
 	/**
 	 * Using a xml it will generate a IBreadCrumb
-	 * @param path, xml path
+	 * @param resourceName, xml name
 	 * @return IbreadCrumb, generated breadCrumb
 	 * @throws ParserConfigurationException
 	 * @throws SAXException
 	 * @throws IOException
 	 * @throws BreadCrumbException 
 	 */
-	public IBreadCrumb createBreadCrumb(String path) throws BreadCrumbException{
+	public IBreadCrumb createBreadCrumb(String resourceName) throws BreadCrumbException{
 		
 		IBreadCrumb breadCrumb = null;
 		Document doc = null;
-		File f;
 		
+		InputStream fichero = null;
 		try {
-			f = new File(path);
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			doc = db.parse(f);
+			
+			fichero = this.getClass().getClassLoader().getResourceAsStream(resourceName);
+			doc = db.parse(fichero);
+
 			breadCrumb = readBreadCrumb(doc);
 		} catch (Exception e) {
 			throw new BreadCrumbException(e, MSG, new Integer(0), "");
+		}finally{
+			if(fichero!=null){
+				try {
+					fichero.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		return breadCrumb;

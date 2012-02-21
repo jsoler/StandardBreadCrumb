@@ -63,14 +63,9 @@ public class AppTest extends TestCase {
     	IBreadCrumbFactory factoria = new XMLBreadCrumbFactory();
     	try {
     		
-    		String path = null;
 			String fileName = "breadcrumb.xml";
-			String full_classPath = System.getProperty("java.class.path");
-			String[] separate_classPath = full_classPath.split(":");
-			String classPath = separate_classPath[0];
-			path = classPath + File.separatorChar+ fileName;
     		
-			IBreadCrumb bread1 = factoria.getBreadCrumb(path);
+			IBreadCrumb bread1 = factoria.getBreadCrumb(fileName);
 			try {
 				assertTrue(checkBreadCrumbFuncionality(bread1));
 			} catch (AssertionFailedError f) {
