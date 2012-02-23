@@ -18,9 +18,32 @@
         <priority>1</priority>
     </trace>
 
+<trace>
+   		<name>Rastro de creacion de usuarios</name>
+	    <url-pattern>/pages/user/manageUser/newUser.xhtml</url-pattern>
+	    <description>Rastro de creacion de usuarios</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>usuarios</text>
+            <url>/pages/user/manageUser/userList.xhtml</url>  
+        </crumb>
+        <crumb>
+            <text>Nuevo_usuario</text>
+            <url>/pages/user/manageUser/newUser.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>2</priority>
+    </trace>
+
     <trace>
    		<name>Rastro de administracion usuarios</name>
-	    <url-pattern>/pages/user/manageUser/userList.xhtml</url-pattern>
+	    <url-pattern>/pages/user/manageUser/.*</url-pattern>
 	    <description>Rastro de migas de pan para el módulo de usuario</description>
         <crumb>
             <text>Home</text>
@@ -30,16 +53,20 @@
             <text>Usuarios</text>
             <url>/pages/user/manageUser/userList.xhtml</url>  
         </crumb>
+        <crumb>
+            <text>Detalle_del_usuario</text>
+            <url>/pages/user/manageUser/userDetails.xhtml</url>  
+        </crumb>
 		<profiles>
         	<profile>All</profile>
         </profiles>
         <enabled>true</enabled>
-        <priority>2</priority>
+        <priority>3</priority>
     </trace>
     
     <trace>
    		<name>Rastro de administracion de solicitudes de registro</name>
-	    <url-pattern>/pages/user/manageSignup/signupList.xhtml</url-pattern>
+	    <url-pattern>/pages/user/manageSignup/.*</url-pattern>
 	    <description>Rastro de migas de pan para el módulo de solicitudes de registro</description>
         <crumb>
             <text>Home</text>
@@ -49,16 +76,81 @@
             <text>Solicitudes</text>
             <url>/pages/user/manageSignup/signupList.xhtml</url>  
         </crumb>
+        <crumb>
+            <text>Detalle_de_la_solicitud</text>
+            <url>/pages/user/manageSignup/signupDetails.xhtml</url>  
+        </crumb>
 		<profiles>
         	<profile>All</profile>
         </profiles>
         <enabled>true</enabled>
-        <priority>3</priority>
+        <priority>4</priority>
+    </trace>
+    
+    <trace>
+   		<name>Rastro de rechazo de solicitudes de registro</name>
+	    <url-pattern>/pages/user/manageSignup/rejectSignup.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el rechazo de solicitudes de registro</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>solicitudes</text>
+            <url>/pages/user/manageSignup/signupList.xhtml</url>  
+        </crumb>
+        <crumb>
+            <text>Detalle_de_la_solicitud</text>
+            <url>/pages/user/manageSignup/rejectSignup.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>5</priority>
+    </trace>
+    
+    <trace>
+   		<name>Rastro de administracion de mi cuenta</name>
+	    <url-pattern>/pages/user/myaccount/.*</url-pattern>
+	    <description>Rastro de migas de pan para la administracion de mi cuenta</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Cuenta</text>
+            <url>/pages/user/myaccount/myaccount.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>6</priority>
+    </trace>
+    
+     <trace>
+   		<name>Rastro de signup</name>
+	    <url-pattern>/pages/user/access/.*</url-pattern>
+	    <description>Rastro de migas de pan para signup</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Registro</text>
+            <url>/pages/user/access/signup.xhtml</url>
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>7</priority>
     </trace>
     
    	<trace>
    		<name>Rastro de administracion de base de conocimiento</name>
-	    <url-pattern>/pages/Knowledge/kbList.xhtml</url-pattern>
+	    <url-pattern>/pages/Knowledge/.*</url-pattern>
 	    <description>Rastro de migas de pan para el módulo de base de conocimiento</description>
         <crumb>
             <text>Home</text>
@@ -68,16 +160,43 @@
             <text>Conocimiento</text>
             <url>/pages/Knowledge/kbList.xhtml</url>  
         </crumb>
+        <crumb>
+            <text>Detalle_de_la_alerta</text>
+            <url>/pages/Knowledge/kbDetails.xhtml</url>  
+        </crumb>
 		<profiles>
         	<profile>All</profile>
         </profiles>
         <enabled>true</enabled>
-        <priority>4</priority>
+        <priority>8</priority>
     </trace>
     
-       	<trace>
+   	<trace>
+   		<name>Rastro de creación de alertas</name>
+	    <url-pattern>/pages/Knowledge/kbNewAlert.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de base de conocimiento</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Gestión_del_Conocimiento</text>
+            <url>/pages/Knowledge/kbList.xhtml</url>  
+        </crumb>
+        <crumb>
+            <text>Creación_de_la_alerta</text>
+            <url>/pages/Knowledge/kbNewAlert.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>9</priority>
+    </trace>
+
+   	<trace>
    		<name>Rastro de administracion de instituciones</name>
-	    <url-pattern>/pages/institucion/institucionList.xhtml</url-pattern>
+	    <url-pattern>/pages/institucion/.*</url-pattern>
 	    <description>Rastro de migas de pan para el módulo de instituciones</description>
         <crumb>
             <text>Home</text>
@@ -87,13 +206,130 @@
             <text>Instituciones</text>
             <url>/pages/institucion/institucionList.xhtml</url>  
         </crumb>
+        <crumb>
+            <text>Detalle_de_la_institucion</text>
+            <url>/pages/institucion/institucionDetails.xhtml</url>  
+        </crumb>
 		<profiles>
         	<profile>All</profile>
         </profiles>
         <enabled>true</enabled>
-        <priority>5</priority>
+        <priority>10</priority>
+    </trace>
+
+   	<trace>
+   		<name>Rastro de administracion de instituciones</name>
+	    <url-pattern>/pages/institucion/.*</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de instituciones</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Instituciones</text>
+            <url>/pages/institucion/institucionList.xhtml</url>  
+        </crumb>
+        <crumb>
+            <text>Creación_de_la_institución</text>
+            <url>/pages/institucion/newInstitucion.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>11</priority>
+    </trace>
+
+
+   	<trace>
+   		<name>Rastro de peticiones de escaneo de aliados</name>
+	    <url-pattern>/pages/scanRequest/.*</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de peticiones de escaneo de aliados</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Peticiones_de_servicio</text>
+            <url>/pages/scanRequest/requestListAllied.xhtml</url>  
+        </crumb>
+        <crumb>
+            <text>Detalle_Petición_de_servicio</text>
+            <url>/pages/scanRequest/requestDetailAllied.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>12</priority>
     </trace>
     
+    <trace>
+   		<name>Rastro de nuevas peticiones de escaneo de aliados</name>
+	    <url-pattern>/pages/scanRequest/newRequestAllied.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de nuevas peticiones escaneo de aliados</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Peticiones_de_servicio</text>
+            <url>/pages/scanRequest/requestListAllied.xhtml</url>  
+        </crumb>
+        <crumb>
+            <text>Creación_Petición_de_servicio</text>
+            <url>/pages/scanRequest/newRequestAllied.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>13</priority>
+    </trace>
+
+    <trace>
+   		<name>Rastro de peticiones de escaneo de técnicos</name>
+	    <url-pattern>/pages/scanRequest/requestList.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de peticiones de escaneo de aliados</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Peticiones_de_servicio</text>
+            <url>/pages/scanRequest/requestList.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>14</priority>
+    </trace>
+    
+    
+   	<trace>
+   		<name>Rastro de peticiones de escaneo de técnicos</name>
+	    <url-pattern>/pages/scanRequest/requestDetail.xhtml</url-pattern>
+	    <description>Rastro de migas de pan para el módulo de peticiones de escaneo de aliados</description>
+        <crumb>
+            <text>Home</text>
+            <url>/index.xhtml</url>
+        </crumb>
+        <crumb>
+            <text>Peticiones_de_servicio</text>
+            <url>/pages/scanRequest/requestList.xhtml</url>  
+        </crumb>
+        <crumb>
+            <text>Detalle_Petición</text>
+            <url>/pages/scanRequest/requestDetail.xhtml</url>  
+        </crumb>
+		<profiles>
+        	<profile>All</profile>
+        </profiles>
+        <enabled>true</enabled>
+        <priority>14</priority>
+    </trace>
+
     <profiles>
     	<profile>All</profile>
     	<profile>Owner</profile>

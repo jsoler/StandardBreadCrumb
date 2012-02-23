@@ -1,6 +1,5 @@
 package com.emergya.aplicaciones.breadcrumb;
 
-import java.io.File;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -33,7 +32,7 @@ public class AppTest extends TestCase {
 	private static final String GVALUE1 = "valor";
 	private static final String GPARAM2 = "clave1";
 	private static final String GVALUE2 = "valor1";
-	private static final String URL = "/appBase/pagina.xhtml&gparam1=gvalor1&param1=valor&param2=valor2";
+	private static final int NUMCHILD = 14;
 	
 	
     /**
@@ -119,7 +118,7 @@ public class AppTest extends TestCase {
 		// Check children
 		Collection<ITrace> children = bread.getChildren();
 		// Check num children
-		if(children.size() != 5){
+		if(children.size() != NUMCHILD){
 			return false;
 		}
 		/* Check a child
@@ -223,12 +222,13 @@ public class AppTest extends TestCase {
 		System.out.println("Url: " + crumb.getUrl());
 		
 		ITrace parent = crumb.getParent();
-		System.out.println("Parent: " + crumb.getParent().getText());
+		System.out.println("Parent: " + parent.getText());
 	
 		String globalParams = "";
     	Iterator<Map.Entry<String, String>> itGParam = crumb.getGlobalParams();
     	while(itGParam.hasNext()){
-    		Map.Entry<String, String> gParamEntry = itGParam.next();
+    		Map.Entry<String, String> gParamEntry;
+			gParamEntry = itGParam.next();
     		globalParams += "[" + gParamEntry.getKey() + "," + gParamEntry.getValue() + "]";
     	}
     	if(globalParams != ""){    		
