@@ -40,7 +40,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="text" type="xs:NCName"/>
+  <xs:element name="text" type="xs:string"/>
   <xs:element name="url" type="xs:string"/>
   <xs:element name="params">
     <xs:complexType>
